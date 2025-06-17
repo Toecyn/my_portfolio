@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <title>Contact - Tosin Ayoola</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<script>
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const currentPath = window.location.pathname.split("/").pop();
+
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active-link');
+    }
+  });
+</script>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="image/logo2.png" alt="My Logo" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">about</a>
+      <a href="articles.html">thoughts</a>
+      <!-- <a href="projects.html">projects</a> -->
+      <a href="contact.html">contact</a>
+      <img src="image/bg1.jpg" alt="Profile" class="avatar" />
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="contact">
+      <h3>Get in touch</h3>
+      <p>
+        I'm currently open to new opportunities. Whether you have a question, want to discuss a potential collaboration, or just say hello, feel free to reach out. I’ll do my best to get back to you promptly.
+      </p>
+
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+  <!-- Anti-spam hidden field -->
+  <input type="hidden" name="form-name" value="contact" />
+  <p hidden>
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </p>
+
+  <label>
+    Full Name
+    <input type="text" name="name" required placeholder="Your full name" />
+  </label>
+
+  <label>
+    Email Address
+    <input type="email" name="email" required placeholder="you@example.com" />
+  </label>
+
+  <label>
+    Subject
+    <input type="subject" name="subject" required placeholder="Type the subject here..." />
+  </label>
+
+  <label>
+    Your Message
+    <textarea name="message" required placeholder="Type your message here..."></textarea>
+  </label>
+
+  <button type="submit" class="cta">Send Message</button>
+</form>
+
+<div id="confirmationModal" class="modal hidden">
+  <div class="modal-content">
+    <h4>Message Sent!</h4>
+    <p>Thank you for reaching out. I’ll get back to you shortly.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+     <div class="contact-alternatives">
+  <h4>Also reach me via:</h4>
+  <p>
+    <img src="image/email.svg" class="icon-inline" alt="Email" />
+    <a href="mailto:ayoolatoecyn@gmail.com">oluwatosin@example.com</a>
+  </p>
+  <p>
+    <img src="image/linkedin.svg" class="icon-inline" alt="LinkedIn" />
+    <a href="https://linkedin.com/in/ayoola-oluwatosin" target="_blank" rel="noopener">linkedin.com/in/oluwatosin</a>
+  </p>
+</div>
+    </section>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop();
+
+    navLinks.forEach(function(link) {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active-link");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

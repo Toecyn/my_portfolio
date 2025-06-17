@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="portfolio.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<script>
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const currentPath = window.location.pathname.split("/").pop();
+
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active-link');
+    }
+  });
+</script>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">
+  <img src="image/logo2.png" alt="My Logo" class="logo-img">
+</a>
+    <nav class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">about</a>
+      <a href="articles.html">thoughts</a>
+      <!-- <a href="projects.html">projects</a> -->
+      <a href="contact.html">contact</a>
+      <img src="image/bg1.jpg" alt="Profile" class="avatar" />
+    </nav>
+  </header>
+
+  <main class="profile-section">
+    <div class="page-content">
+
+    </div>
+    <div class="profile-header">
+      <img src="image/bg1.jpg" alt="Tosin Ayoola" class="profile-pic" />
+      <div class="profile-info">
+        <h2>Tosin Ayoola</h2>
+        <p class="role">Product Manager</p>
+        <p class="location">Toronto, CA</p>
+      </div>
+    </div>
+  
+    <p class="summary">
+      As a Product Manager encompasses shaping product visions and translating user needs into actionable roadmaps. With a robust background in product management, I am dedicated to delivering exemplary solutions through meticulous data analysis and strategic thinking. I prioritize collaboration with cross-functional teams to ensure seamless product lifecycles and market introductions.
+    </p>
+    <p>
+      My experience has been marked by a commitment to continuous product improvement, informed by a cycle of user research, feedback integration, and performance tracking. Embodying the principles of agile methodology, I've successfully iterated and enhanced several products, such as an Order Management System, E-commerce apps, and Fintech Apps, alongside other key business tools, contributing to a refined and responsive product suite across multiple organizations. 
+    </p>
+
+  <section class="career">
+  <h3>Career Journey</h3>
+  <ul class="timeline">
+    <li>
+      <div class="icon"></div>
+      <div class="details">
+        <strong>Senior Product Manager at Sabi [O2O Network Limited] – Lagos & Johannesburg</strong><br />
+        <span>2021 – Present</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon"></div>
+      <div class="details">
+        <strong>Senior Product Manager at Zojatech Limited</strong><br />
+        <span>2020 – 2021</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon"></div>
+      <div class="details">
+        <strong>Product Manager at Simple Analytics</strong><br />
+        <span>2018 – 2020</span>
+      </div>
+    </li>
+     <li>
+      <div class="icon"></div>
+      <div class="details">
+        <strong>Product Manager at TechAdvance</strong><br />
+        <span>2017 – 2018</span>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+    <section class="values">
+      <h3>Values</h3>
+      <p>
+        I believe in building products that are not only functional but also delightful to use. I value collaboration, transparency, and continuous learning. I'm committed to creating inclusive and equitable products that serve a diverse range of users. I'm always eager to learn new skills and stay up-to-date with the latest industry trends.
+      </p>
+    </section>
+
+    <section class="strengths">
+      <h3>Strengths</h3>
+      <p>
+        My key strengths include strategic thinking, problem-solving, communication, and leadership. I excel at translating complex ideas into actionable plans and effectively communicating with stakeholders at all levels. I'm adept at identifying and solving problems creatively and efficiently. I'm a natural leader who can inspire and motivate teams to achieve ambitious goals.
+      </p>
+    </section>
+
+    <section class="core-competencies">
+      <h3>Core Competencies</h3>
+  
+  <div class="competency-grid">
+    <div class="competency-card active" onclick="updateCompetency('strategy')">
+  <div class="icon"><img src="image/strategy.svg" /></div>
+  <strong>Product Strategy & Vision</strong>
+</div>
+
+<div class="competency-card" onclick="updateCompetency('innovation')">
+  <div class="icon"><img src="image/user-research.svg" /></div>
+  <strong>Customer-Centric Innovation</strong>
+</div>
+
+<div class="competency-card" onclick="updateCompetency('execution')">
+  <div class="icon"><img src="image/data-analysis.svg" /></div>
+  <strong>Outcome-Driven Execution</strong>
+</div>
+
+<div class="competency-card" onclick="updateCompetency('leadership')">
+  <div class="icon"><img src="image/leadership.svg" /></div>
+  <strong>Cross-Functional Leadership</strong>
+</div>
+
+  </div>
+
+  <p id="competency-description" class="competency-description show">
+  Crafts bold, future-facing product visions grounded in real-world impact. Expert at uncovering whitespace, transforming market uncertainty into strategic opportunity, and architecting scalable roadmaps that deliver compounding value. Blends market insight with data precision to drive high-conviction, high-leverage decisions.
+</p>
+
+</section>
+
+<section class="testimonials">
+  <h3>Testimonials</h3>
+  
+  <div class="testimonial-entry">
+    <div class="testimonial-header">
+      <div>
+        <strong>Olanrewaju Adeniji</strong>
+        <div class="testimonial-date">14-04-2023</div>
+      </div>
+    </div>
+
+    <p class="testimonial-text">
+      Oluwatosin is one of the most diligent colleagues I have ever had the opportunity to work with. His resilience and hard work is I relish and his contributions in his team is quite immense. Oluwatosin is definitely an asset to any organisation he finds himself.
+    </p>
+    <div class="testimonial-reactions">
+      <button class="like-btn" onclick="increaseLike(this)">
+    👍 <span class="like-count">10</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="testimonial-entry">
+    <div class="testimonial-header">
+      <div>
+        <strong>Kazeem Noibi</strong>
+        <div class="testimonial-date">15-06-2021</div>
+      </div>
+    </div>
+
+    <p class="testimonial-text">
+      Tosin is a very energetic, resourceful and productive product manager.
+    </p>
+    <div class="testimonial-reactions">
+      <button class="like-btn" onclick="increaseLike(this)">
+    👍 <span class="like-count">12</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="testimonial-entry">
+    <div class="testimonial-header">
+      <div>
+        <strong>Festus Olaleye</strong>
+        <div class="testimonial-date">02-04-2021</div>
+      </div>
+    </div>
+
+    <p class="testimonial-text">
+      Ayoola Oluwatosin has exceptional expertise in product management. His man management skill is top-notch. He is a great leader and knows how to get the best out of his team members. I will choose to work with him again and again.
+    </p>
+    <div class="testimonial-reactions">
+      <button class="like-btn" onclick="increaseLike(this)">
+    👍 <span class="like-count">8</span>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+  </main>
+
+  <script src="portfolio.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop();
+
+    navLinks.forEach(function(link) {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active-link");
+      }
+    });
+  });
+</script>
+<script src="portfolio.js"></script>
+</body>
+</html>
