@@ -3,65 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="image/favicon.png">
   <title>Tosin Ayoola</title>
+  <link rel="icon" type="image/png" href="image/favicon.png" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet" />
 </head>
-
-<script>
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const currentPath = window.location.pathname.split("/").pop();
-
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('active-link');
-    }
-  });
-</script>
 
 <body>
   <header class="navbar">
+    <!-- Desktop Logo -->
     <a href="index.html" class="logo">
-  <img src="image/logo2.png" alt="My Logo" class="logo-img">
-</a>
-    <nav class="nav-links"> 
+      <img src="image/logo2.png" alt="Tosin Ayoola Logo" class="logo-img" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav nav-links">
       <a href="index.html">home</a>
       <a href="portfolio.html">about</a>
       <a href="articles.html">thoughts</a>
-      <!-- <a href="projects.html">projects</a> -->
       <a href="contact.html">contact</a>
-      <img src="image/bg1.jpg" alt="Profile" class="avatar" />
+      <img src="image/bg1.jpg" alt="Profile" class="avatar desktop-avatar" />
     </nav>
+
+    <!-- Mobile Navigation Top Bar -->
+    <div class="mobile-nav">
+      <div class="mobile-nav-left">
+        <a href="index.html">
+          <img src="image/logo2.png" alt="Tosin Logo Mobile" class="mobile-logo" />
+        </a>
+      </div>
+      <div class="mobile-nav-right">
+        <button class="menu-toggle">&#9776;</button>
+        <img src="image/bg1.jpg" alt="Profile" class="avatar mobile-avatar" />
+      </div>
+    </div>
   </header>
 
+  <!-- Mobile Navigation Menu -->
+  <nav class="mobile-nav-menu">
+    <a href="index.html">home</a>
+    <a href="portfolio.html">about</a>
+    <a href="articles.html">thoughts</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <!-- Hero Section -->
   <section class="hero">
-  <div class="hero-background" style="background-image: url('image/bg9.jpg');"></div>
-  <div class="overlay">
-    <h1>Tosin Ayoola</h1>
-    <p>
-      Product leader with a track record of transforming complex user needs into high-impact, scalable
-      solutions across fintech, e-commerce, and enterprise tools. I bring strategic clarity, data-driven
-      execution, and a relentless bias for meaningful outcomes. Let me show you what world-class
-      product thinking looks like.
-    </p>
-    <a href="portfolio.html" class="cta">View My Portfolio</a>
-  </div>
-</section>
+    <div class="hero-background" style="background-image: url('image/bg9.jpg');"></div>
+    <div class="overlay">
+      <h1>Tosin Ayoola</h1>
+      <p>
+        Product leader with a track record of transforming complex user needs into high-impact, scalable
+        solutions across fintech, e-commerce, and enterprise tools. I bring strategic clarity, data-driven
+        execution, and a relentless bias for meaningful outcomes. Let me show you what world-class
+        product thinking looks like.
+      </p>
+      <a href="portfolio.html" class="cta">View My Portfolio</a>
+    </div>
+  </section>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const currentPage = window.location.pathname.split("/").pop();
-
-    navLinks.forEach(function(link) {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active-link");
-      }
-    });
-  });
-</script>
 </body>
 </html>
