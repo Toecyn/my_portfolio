@@ -5,22 +5,15 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #000;
   color: #f0f0f0;
-}
-
-
-body {
   font-family: 'Times New Roman', serif;
-  background-color: #000;
-  color: #f0f0f0;
 }
 
+/* NAVIGATION */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -29,12 +22,13 @@ body {
   background-color: #111;
 }
 
-.logo-img {
-  height: 32px; 
-  width: auto;
-  transform: scale(5);   /* visually increase size */
-  transform-origin: left center;
-  transition: transform 0.3s ease;
+.desktop-nav {
+  display: flex;
+}
+
+.mobile-nav,
+.mobile-nav-menu {
+  display: none;
 }
 
 .navbar .logo {
@@ -43,22 +37,42 @@ body {
   margin-left: -2rem;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  transform: scale(2);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  padding: 0;
 }
 
-.nav-links a {
- text-decoration: none;
+.nav-links a,
+.mobile-nav-menu a {
+  text-decoration: none;
   color: #fff;
-  font-family: 'Times New Roman', serif;
   font-style: italic;
+  font-family: 'Times New Roman', serif;
 }
 
-.nav-links a.active-link {
+.nav-links a.active-link,
+.mobile-nav-menu a.active-link {
   color: #f0c000;
   border-bottom: 2px solid #f0c000;
+  display: inline-block;
+  padding-bottom: 0.2rem;
 }
 
 .avatar {
@@ -68,34 +82,45 @@ body {
   border: 2px solid #fff;
 }
 
+.avatar.desktop-avatar {
+  display: block;
+}
+.avatar.mobile-avatar {
+  display: none;
+}
+
+.mobile-logo {
+  display: none;
+}
+
+/* HERO SECTION */
 .hero {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  min-height: 100vh;
+  width: 100%;
+  padding: 8rem 4rem 2rem;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start; 
-  padding: 10rem 4rem;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.6); 
+  filter: brightness(0.6);
   z-index: 0;
+  pointer-events: none;
 }
 
 .overlay {
   position: relative;
   z-index: 1;
   max-width: 1000px;
-  color: #fff;
+  color: #000;
+  margin-bottom: 6rem;
 }
 
 .overlay h1 {
@@ -103,22 +128,18 @@ body {
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.2;
-  color: #000;
   font-style: italic;
-  font-family: 'Times New Roman', serif;
 }
 
 .overlay p {
-  width: 100%;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.3;
   margin-bottom: 2rem;
-  color: #000;
   font-weight: bold;
   font-style: italic;
-  font-family: 'Times New Roman', serif;
 }
 
+/* CTA */
 .cta {
   background-color: #db9901;
   color: #000;
@@ -128,13 +149,13 @@ body {
   border-radius: 8px;
   text-decoration: none;
   transition: 0.3s ease;
-  font-family: 'Times New Roman', serif;
 }
 
 .cta:hover {
   background-color: #0051c1;
 }
 
+/* BG OVERLAY (optional) */
 .bg1 {
   background-image: url('image/bg9.jpg');
   background-size: cover;
@@ -147,31 +168,164 @@ body {
   z-index: 0;
 }
 
+/* MOBILE STYLES */
 @media (max-width: 768px) {
-  .overlay {
-    bottom: 2rem;
-    max-width: 90%;
-    font-size: 0.95rem;
+  html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    overscroll-behavior: none;
+    touch-action: none;
   }
 
-  .overlay h1 {
-    font-size: 1.5rem;
+  .hero,
+  .hero-background {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    width: 100%;
+  }
+
+  .mobile-logo {
+    display: block;
+    height: 100px;
+    margin-left: -2rem;
+    transform: translateY(6px);
+  }
+
+  .logo-img {
+    display: none;
+  }
+
+  .avatar.desktop-avatar {
+    display: none;
+  }
+  .avatar.mobile-avatar {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    order: 1;
+  }
+
+  .mobile-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: -0.5rem;
+  }
+
+  .mobile-nav-menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100px; /* just below navbar */
+  left: 0;
+  width: 100%;
+  padding: 2rem 0;
+  background-color: #111;
+  z-index: 999;
+  border-top: 1px solid #222;
+  }
+
+  .mobile-nav-menu.show {
+  display: flex;
+  }
+
+  .mobile-nav-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-style: italic;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  }
+
+  .mobile-nav-menu a.active-link {
+  color: #f0c000;
+  border-bottom: 2px solid #f0c000;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+  }
+
+  .hero {
+    height: 100vh;
+    padding: 6rem 1rem 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .overlay {
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    margin-bottom: 10rem;
   }
 
   .overlay p {
-    font-size: 0.9rem;
+    text-align: left;
+    margin-bottom: 2rem;
   }
+}
 
-  .cta {
-    padding: 0.5rem 1rem;
-  }
 
-  .nav-links {
+
+.nav-links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
+
+.overlay {
+    text-align: left;
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .overlay h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .overlay p {
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: auto;
+  width: 70%;
 }
+
+  .cta {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1rem;
+  }
 
 .contact {
   padding: 3rem 4rem 3rem 6rem;
@@ -443,12 +597,17 @@ body {
     margin-top: 1rem;
   }
 }
-html, body {
-  overflow: auto;
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
-}
 
-body::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+/* Hide scrollbar in all browsers */
+@media (min-width: 769px) {
+  html, body {
+    height: 100vh;
+    overflow: hidden;
+    -ms-overflow-style: none;     /* IE/Edge */
+    scrollbar-width: none;        /* Firefox */
+  }
+
+  body::-webkit-scrollbar {
+    display: none;                /* Chrome/Safari */
+  }
 }
