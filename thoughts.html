@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <title>Articles</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar">
+    <!-- Desktop Logo -->
+    <a href="index.html" class="logo">
+      <img src="image/logo2.png" alt="Tosin Ayoola Logo" class="logo-img" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">about</a>
+      <a href="thoughts.html">thoughts</a>
+      <a href="contact.html">contact</a>
+      <img src="image/bg1.jpg" alt="Profile" class="avatar desktop-avatar" />
+    </nav>
+
+    <!-- Mobile Navigation Top Bar -->
+    <div class="mobile-nav">
+      <div class="mobile-nav-left">
+        <a href="index.html">
+          <img src="image/logo2.png" alt="Tosin Logo Mobile" class="mobile-logo" />
+        </a>
+      </div>
+      <div class="mobile-nav-right">
+        <button class="menu-toggle">&#9776;</button>
+        <img src="image/bg1.jpg" alt="Profile" class="avatar mobile-avatar" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <nav class="mobile-nav-menu">
+    <a href="index.html">home</a>
+    <a href="portfolio.html">about</a>
+    <a href="thoughts.html">thoughts</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <main class="articles-section">
+    <h2>My Thoughts</h2>
+
+    <div class="article-card">
+      <div class="article-content">
+        <div class="article-title">Neuro-Inclusive Product Management</div>
+        <div class="article-date">Jun 16, 2025</div>
+        <div class="article-description">It has become expedient that products and processes need to be inclusive of every user, particularly neurodiverse users. The importance and significance of this inclusiveness are becoming clearer to product leaders and related...</div>
+        <a href="https://www.linkedin.com/pulse/neuro-inclusive-product-management-tosin-ayoola-wajie/?trackingId=0wGXjS1IRYqlYGB244UhHw%3D%3D" class="read-more-btn">See More</a>
+      </div>
+      <img src="image/article3.png" alt="Article 3" class="article-image" />
+    </div>
+
+    <div class="article-card">
+      <div class="article-content">
+        <div class="article-title">Update.Upgrade.Become</div>
+        <div class="article-date">Sep 22, 2018</div>
+        <div class="article-description">Every so often, I pick up my phone and notice familiar apps quietly “waiting for Wi-Fi” to update. It’s a routine signal that something behind the scenes is evolving: performance improvements, bug fixes, design overhauls, new features....</div>
+        <a href="https://www.linkedin.com/pulse/update-upgrade-ayoola-oluwatosin/?trackingId=B%2FcI4JCGQkWrPEJqJNEfyg%3D%3D" class="read-more-btn">See More</a>
+      </div>
+      <img src="image/article2.png" alt="Article 2" class="article-image" />
+    </div>
+
+    <div class="article-card">
+      <div class="article-content">
+        <div class="article-title">Let's Time Travel, The World in 2040!</div>
+        <div class="article-date">Aug 5, 2018</div>
+        <div class="article-description">I find myself somewhere between wonder and caution whenever I imagine the world two decades from now. By 2040, I will likely be a man in his early fifties, and while that prospect alone brings a sense of maturity and fulfillment...</div>
+        <a href="https://www.linkedin.com/pulse/lets-time-travel-its-2040-ayoola-oluwatosin/" class="read-more-btn">See More</a>
+      </div>
+      <img src="image/article1.png" alt="Article 1" class="article-image" />
+    </div>
+  </main>
+
+  <meta name="description" content="Thoughts on product strategy, innovation, and leadership by Tosin Ayoola. Dive into perspectives shaping inclusive, future-forward product management.">
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const allLinks = document.querySelectorAll('.nav-links a, .mobile-nav-menu a');
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      allLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href === currentPage || "./" + href === currentPage) {
+          link.classList.add("active-link");
+        }
+      });
+
+      // Hamburger toggle logic
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const mobileMenu = document.querySelector('.mobile-nav-menu');
+
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("show");
+
+          const isOpen = mobileMenu.classList.contains("show");
+          document.body.style.overflow = isOpen ? "hidden" : "auto";
+          document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
