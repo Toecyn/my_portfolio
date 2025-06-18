@@ -34,7 +34,7 @@ html, body {
 .navbar .logo {
   display: flex;
   align-items: center;
-  margin-left: -2rem;
+  margin-left: -0.5rem;
 }
 
 .logo {
@@ -47,7 +47,7 @@ html, body {
 .logo-img {
   height: 48px;
   width: auto;
-  transform: scale(2);
+  transform: none;
   transform-origin: left center;
   transition: transform 0.3s ease;
 }
@@ -173,7 +173,7 @@ html, body {
   html, body {
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow: auto;
     position: fixed;
     overscroll-behavior: none;
     touch-action: none;
@@ -199,8 +199,8 @@ html, body {
 
   .mobile-logo {
     display: block;
-    height: 100px;
-    margin-left: -2rem;
+    height: 45px;
+    margin-left: 0rem;
     transform: translateY(6px);
   }
 
@@ -236,7 +236,7 @@ html, body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 100px; /* just below navbar */
+  top: 76px; /* just below navbar */
   left: 0;
   width: 100%;
   padding: 2rem 0;
@@ -389,7 +389,7 @@ html, body {
 }
 
 .contact-form .cta {
-  background: #3f87f5;
+  background: #fff;
   color: #000;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -491,7 +491,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .nav-links {
   display: flex;
   align-items: center;
@@ -505,7 +504,7 @@ body {
 }
 
 .articles-section h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   color: #fff;
 }
@@ -533,7 +532,7 @@ body {
 }
 
 .article-date {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #888;
   margin-bottom: 0.5rem;
 }
@@ -580,22 +579,64 @@ body {
 
 @media (max-width: 768px) {
   .article-card {
-    flex-direction: column;
-    align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
   }
 
   .article-image {
+    order: 1;
     width: 100%;
     height: auto;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    object-fit: cover;
   }
-}
 
-/* Hide scrollbar in all browsers */
+  .article-content {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .article-title {
+    order: 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+
+  .article-date {
+    order: 2;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-description {
+    order: 3;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #ccc;
+    width: 100%;
+  }
+
+  .read-more-btn {
+    order: 4;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.9rem;
+  }
+} 
+
+
+/* Prevent custom scrollbars but still allow scrolling */
 @media (min-width: 769px) {
   html, body {
-    height: 100vh;
-    overflow: hidden;
+    overflow-y: scroll; /* keeps layout stable */
     -ms-overflow-style: none;     /* IE/Edge */
     scrollbar-width: none;        /* Firefox */
   }

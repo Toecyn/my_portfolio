@@ -1,31 +1,42 @@
 console.log('Portfolio page loaded.');
 
-function updateCompetency(skill) {
-  const desc = document.getElementById("competency-description");
+function toggleCompetency(card) {
+  const allCards = document.querySelectorAll('.competency-card');
 
-  const descriptions = {
-    strategy:
-      "Crafts bold, future-facing product visions grounded in real-world impact. Expert at uncovering whitespace, transforming market uncertainty into strategic opportunity, and architecting scalable roadmaps that deliver compounding value. Blends market insight with data precision to drive high-conviction, high-leverage decisions.I develop and execute high-impact product strategies that align with business goals, ensuring market fit and long-term growth.",
-    innovation:
-      "Leads with deep customer empathy as the foundation for breakthrough product innovation. Fuses qualitative research, behavioral analytics, and first-principles thinking to surface unmet needs and design solutions that resonate. Builds products that earn not just adoption, but advocacy.",
-    execution:
-      "Relentlessly focused on outcomes over outputs, with a proven record of shipping high-scale products that deliver measurable user and business value. Combines sharp prioritization with adaptive iteration to move fast without sacrificing quality, always optimizing for impact.",
-    leadership:
-      "Mobilizes cross-functional teams with influence, not authority, uniting product, engineering, design, and business stakeholders around shared outcomes. Trusted by executives for principled clarity and by teams for unblocking complexity with empathy, focus, and drive."
-  };
+  allCards.forEach(c => {
+    if (c !== card) {
+      c.classList.remove('active');
 
-  const allCards = document.querySelectorAll(".competency-card");
-  allCards.forEach(card => card.classList.remove("active"));
+      // Mobile: hide other descriptions
+      const desc = c.querySelector('.competency-description');
+      if (window.innerWidth <= 768 && desc) {
+        desc.style.display = 'none';
+      }
+    }
+  });
 
-  const selectedCard = document.querySelector(`.competency-card[onclick*="${skill}"]`);
-  if (selectedCard) selectedCard.classList.add("active");
+  card.classList.toggle('active');
 
-  desc.classList.remove("show");
-  setTimeout(() => {
-    desc.textContent = descriptions[skill];
-    desc.classList.add("show");
-  }, 100);
+  const desc = card.querySelector('.competency-description');
+  const desktopDisplay = document.getElementById('desktop-competency-description');
+
+  if (window.innerWidth <= 768) {
+    // Mobile: toggle inline display
+    if (desc) {
+      desc.style.display = card.classList.contains('active') ? 'block' : 'none';
+    }
+    if (desktopDisplay) desktopDisplay.innerHTML = ''; // Clear desktop area
+  } else {
+    // Desktop: show description externally
+    if (desc && card.classList.contains('active') && desktopDisplay) {
+      desktopDisplay.innerHTML = `<p class="fade-in">${desc.innerHTML}</p>`;
+      desktopDisplay.style.display = 'block';
+    } else {
+      desktopDisplay.innerHTML = '';
+    }
+  }
 }
+
 
 function increaseLike(button) {
   const countSpan = button.querySelector('.like-count');
@@ -49,9 +60,27 @@ function increaseLike(button) {
   }, 300);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  updateCompetency('strategy');
+function getLikeKey(button) {
+  const parent = button.closest('.testimonial-entry');
+  if (!parent) return 'likeCount_unknown';
+  const nameElement = parent.querySelector('strong');
+  const name = nameElement ? nameElement.textContent.trim() : 'unknown';
+  return `likeCount_${name}`;
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Highlight active nav link
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-menu a');
+  const currentPage = window.location.pathname.split("/").pop() || "portfolio.html";
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === currentPage || "./" + href === currentPage) {
+      link.classList.add("active-link");
+    }
+  });
+
+  // Restore like counts from localStorage
   document.querySelectorAll('.like-btn').forEach(button => {
     const key = getLikeKey(button);
     const savedCount = localStorage.getItem(key);
@@ -63,12 +92,24 @@ window.addEventListener('DOMContentLoaded', () => {
       button.classList.add('liked');
     }
   });
-});
 
-function getLikeKey(button) {
-  const parent = button.closest('.testimonial-entry');
-  if (!parent) return 'likeCount_unknown';
-  const nameElement = parent.querySelector('strong');
-  const name = nameElement ? nameElement.textContent.trim() : 'unknown';
-  return `likeCount_${name}`;
-}
+  // Toggle mobile menu
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-nav-menu');
+
+  if (toggleBtn && mobileMenu) {
+    toggleBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("show");
+
+      const isOpen = mobileMenu.classList.contains("show");
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
+      document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
+    });
+  }
+
+  // ✅ Set first competency card as active by default
+  const firstCard = document.querySelector('.competency-card');
+  if (firstCard) {
+    toggleCompetency(firstCard);
+  }
+});
