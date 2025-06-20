@@ -169,7 +169,7 @@ html, body {
 }
 
 /* MOBILE STYLES */
-@media (min-width: 599px) {
+@media (min-width: 768px) {
  html, body {
     height: auto;
     width: 100%;
